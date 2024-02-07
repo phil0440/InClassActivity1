@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             convertCurrency(view);
         } );
     }
-//Test Branch
     public void convertCurrency(View view) {
 
         EditText inputView = findViewById(R.id.entryId);
