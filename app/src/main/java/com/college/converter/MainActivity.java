@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void convertCurrency(View view) {
-
+//kfdglskdfjg
         EditText inputView = findViewById(R.id.entryId);
 
         String inputAmount = inputView.getText().toString();
