@@ -1,13 +1,16 @@
 package com.college.converter;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.college.converter.databinding.ActivityMainBinding;
+
 
 /*
     TODOs:
@@ -26,37 +29,41 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     static private final Float CONVERSION_RATE = 0.80F;
 
+    //Declare a binding variable
+    private ActivityMainBinding binding;
+
     static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //Inflate the binding
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
 
-        // log
-        Log.i(TAG, "Activity onCreate() entry");
-        Button buttonConvert = findViewById(R.id.convertButton);
+        //Set the content view to the root of the binding
+        setContentView(binding.getRoot());
 
-        buttonConvert.setOnClickListener( view ->  {
-            convertCurrency(view);
-        } );
-    }
+        // Now use binding to find the button and set the click listener
+        binding.convertButton.setOnClickListener(this::convertCurrency);
+
+
+        }
+
     public void convertCurrency(View view) {
 
         // log
-        Log.i(TAG, "convertCurrency() started");
+        Log.i(TAG, "Activity onCreate() entry");
+      
 
-        EditText inputView = findViewById(R.id.entryId);
+        String inputAmount = binding.entryId.getText().toString();
 
-        String inputAmount = inputView.getText().toString();
-
-        TextView resultView = findViewById(R.id.resultId);
 
         if (!inputAmount.isEmpty()) {
             Float inputAmountDecimal = Float.valueOf(inputAmount);
 
             Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
 
-            resultView.setText( resultFloat + " Euros" );
+            binding.resultId.setText( resultFloat + " Euros" );
         }
 
         // log
