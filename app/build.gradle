@@ -3,6 +3,7 @@ plugins {
 }
 
 android {
+
     compileSdk 34
 
     defaultConfig {
@@ -26,6 +27,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     namespace 'com.college.converter'
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
