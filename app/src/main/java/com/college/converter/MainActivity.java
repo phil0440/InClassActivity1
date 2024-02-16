@@ -3,9 +3,6 @@ package com.college.converter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -63,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
             Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
 
-            binding.resultId.setText( resultFloat + " Euros" );
+            String resultText = getString(R.string.conversion_result, resultFloat);
+            binding.resultId.setText(resultText);
         }
 
         // log
